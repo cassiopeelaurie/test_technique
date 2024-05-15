@@ -1,10 +1,4 @@
-controllers:
-  resource:
-    path: ../src/Controller/
-    namespace: App\Controller
-  type: attribute
-
-# Route pour la page d'accueil
-home:
-  path: /search
-  controller: App\Controller\VehiculeController::index
+# config/routes.yaml
+hello_page:
+  path: /hello
+  controller: App\Controller\DefaultController::hello
