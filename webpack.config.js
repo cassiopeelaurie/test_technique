@@ -52,8 +52,10 @@ Encore
     config.useBuiltIns = "usage";
     config.corejs = "3.23";
   })
+  .enablePostCssLoader()
 
-  .enablePostCssLoader();
+  // Enable Stimulus Bridge
+  .enableStimulusBridge("./assets/controllers.json");
 
 // enables Sass/SCSS support
 //.enableSassLoader()
