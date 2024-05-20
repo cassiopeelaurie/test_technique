@@ -1,6 +1,8 @@
 <?php
 // index.php
-include 'includes/db.php';
+
+include __DIR__ . '/includes/db.php';
+
 include 'recherche.php';
 ?>
 
