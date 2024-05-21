@@ -13,6 +13,14 @@ include 'recherches.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche de Véhicules</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Recherche de Véhicules Disponibles</h1>
@@ -39,7 +47,12 @@ include 'recherches.php';
             let resultatsDiv = document.getElementById('resultats');
 
             fetch(`recherches.php?date_debut=${dateDebut}&date_fin=${dateFin}`)
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
                 .then(data => {
                     resultatsDiv.innerHTML = data;
                 })
