@@ -3,7 +3,7 @@
 
 include __DIR__ . '/includes/db.php';
 
-include 'recherche.php';
+include 'recherches.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ include 'recherche.php';
 </head>
 <body>
     <h1>Recherche de Véhicules Disponibles</h1>
-    <form action="recherche.php" method="GET">
+    <form id="searchForm">
         <label for="date_debut">Date de début :</label>
         <input type="date" id="date_debut" name="date_debut" required>
         <br>
@@ -29,5 +29,25 @@ include 'recherche.php';
     <div id="resultats">
         <!-- Les résultats de la recherche seront affichés ici -->
     </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let dateDebut = document.getElementById('date_debut').value;
+            let dateFin = document.getElementById('date_fin').value;
+            let resultatsDiv = document.getElementById('resultats');
+
+            fetch(`recherches.php?date_debut=${dateDebut}&date_fin=${dateFin}`)
+                .then(response => response.text())
+                .then(data => {
+                    resultatsDiv.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    resultatsDiv.innerHTML = '<p>Une erreur s\'est produite lors de la recherche.</p>';
+                });
+        });
+    </script>
 </body>
 </html>
