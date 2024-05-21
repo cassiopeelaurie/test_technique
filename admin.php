@@ -32,5 +32,23 @@
         <br>
         <button type="submit">Modifier Disponibilités</button>
     </form>
+    <h2>Supprimer un véhicule</h2>
+<form action="supprimer_vehicule.php" method="post">
+    <label for="vehicule_id">Sélectionnez le véhicule à supprimer :</label>
+    <select id="vehicule_id" name="vehicule_id" required>
+        <?php
+        // Récupérer les véhicules depuis la base de données
+        // Remplacer $pdo avec votre connexion à la base de données
+        $sql = "SELECT id, marque, modele FROM vehicules";
+        $stmt = $pdo->query($sql);
+        $vehicules = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($vehicules as $vehicule) {
+            echo "<option value='" . $vehicule['id'] . "'>" . $vehicule['marque'] . " " . $vehicule['modele'] . "</option>";
+        }
+        ?>
+    </select>
+    <button type="submit">Supprimer</button>
+</form>
+
 </body>
 </html>

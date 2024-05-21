@@ -62,5 +62,6 @@ include 'recherches.php';
                 });
         });
     </script>
+    <a href="admin.php">Admin</a>
 </body>
 </html>

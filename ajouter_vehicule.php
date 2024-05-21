@@ -1,6 +1,8 @@
 <?php
 // ajouter_vehicule.php
 
+require __DIR__ . '/includes/db.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validation des données du formulaire
     $marque = $_POST["marque"];
